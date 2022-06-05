@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <main class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <textarea class="form-control" name="comment"></textarea>
+            <input type="submit" value="送信">
+        </form>
+    
+        {% for topic in topics %}
+        <div class="border">
+            {% if User == AnonymousUser %}
+                匿名:
+            {% else %}
+                {{ User }}
+            {% endif %}
+            {{ topic.comment }}
+        </div>
+        {% endfor %}
+    </main>
+    <a href="{% url 'login' %}" class="login">login</a>
+</body>
+</html>
