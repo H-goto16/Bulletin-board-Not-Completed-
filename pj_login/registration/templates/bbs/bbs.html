@@ -17,10 +17,10 @@
     
         {% for topic in topics %}
         <div class="border">
-            {% if User == AnonymousUser %}
+            {% if user == AnonymousUser %}
                 匿名:
             {% else %}
-                {{ User }}
+                {{ user }}
             {% endif %}
             {{ topic.comment }}
         </div>
